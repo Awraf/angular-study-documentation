@@ -10,13 +10,14 @@
     Description: {{ product.description }}
   </p>
 
+  <div>
+    <button (click)="addToCart(product)">Buy</button>
+  </div>
+<!-- 
    <button (click)="share()">
     Share
-  </button>
+  </button> -->
 
-  <app-product-alerts 
-  [product]="product"
-  (notify)="onNotify()"></app-product-alerts>
 </h3>
 </div>
 

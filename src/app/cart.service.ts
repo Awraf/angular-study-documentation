@@ -5,12 +5,15 @@ import { HttpClient } from '@angular/common/http';
 
 export class CartService {
   items = [];
+  total = 0;
+
   constructor(
     private http: HttpClient
   ) { }
 
   addToCart(product) {
     this.items.push(product);
+    this.total += product.price;
   }
 
   removeFromCart(product)
@@ -22,6 +25,7 @@ export class CartService {
     if(index > -1)
     {
       this.items.splice(index, 1);
+      this.total -= product.price;
       return this.items;
     }
     else {
@@ -33,8 +37,13 @@ export class CartService {
     return this.items;
   }
 
+  getTotal() {
+    return this.total;
+  }
+
   clearCart() {
     this.items = [];
+    this.total = 0;
     return this.items;
   }
 
